@@ -234,19 +234,19 @@
 @media (max-width: 900px) {
   .location__grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
   }
 }
 
 @media (max-width: 520px) {
   .location-card {
-    padding: 18px 16px;
-    gap: 14px;
+    padding: 22px 18px;
+    gap: 16px;
   }
 
   .location-card__actions {
     grid-template-columns: 1fr;
-    gap: 9px;
+    gap: 10px;
   }
 
   .location-map__pin-badge {

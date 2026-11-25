@@ -35,6 +35,9 @@
   /* Spacing & Layout */
   --container-max: 1200px;
   --container-pad: 24px;
+  --section-py-desktop: 68px;
+  --section-py-tablet: 52px;
+  --section-py-mobile: 38px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;

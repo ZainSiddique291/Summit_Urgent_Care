@@ -165,26 +165,26 @@
 
 @media (max-width: 760px) {
   .footer__main {
-    padding: 28px 0 24px;
+    padding: 36px 0 30px;
   }
 
   .footer__inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 24px;
   }
 
   .footer__contact-col {
     padding-left: 0;
-    padding-top: 18px;
+    padding-top: 22px;
     border-left: none;
     border-top: 1px solid rgba(255, 255, 255, 0.16);
     width: 100%;
-    gap: 14px;
+    gap: 16px;
   }
 
   .footer__bottom {
-    padding: 13px 0;
+    padding: 15px 0;
   }
 
   .footer__bottom-inner {

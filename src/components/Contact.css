@@ -205,40 +205,40 @@ a.contact-info-card__value:hover {
 @media (max-width: 900px) {
   .contact__grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
   }
 }
 
 @media (max-width: 580px) {
   .contact-info-card {
-    padding: 20px 16px;
-    gap: 14px;
+    padding: 22px 18px;
+    gap: 16px;
   }
 
   .contact-info-card__list {
-    gap: 11px;
+    gap: 13px;
   }
 
   .contact-info-card__icon {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
   }
 
   .contact-info-card__value {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
   }
 
   .contact-form-card {
-    padding: 18px 16px;
+    padding: 22px 18px;
   }
 
   .contact-form {
-    gap: 11px;
+    gap: 14px;
   }
 
   .contact-form__row {
     grid-template-columns: 1fr;
-    gap: 11px;
+    gap: 14px;
   }
 
   .contact-form__submit {
