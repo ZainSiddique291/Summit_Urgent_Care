@@ -1,0 +1,111 @@
+.testimonials {
+  background-color: var(--white);
+  padding-top: 40px;
+  padding-bottom: 52px;
+}
+
+.testimonials__header {
+  margin-bottom: 30px;
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.testimonial-card {
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-card__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.testimonial-card__avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--navy-100);
+}
+
+.testimonial-card__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.testimonial-card__quote {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.testimonial-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card__author {
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.testimonial-card__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.testimonials__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.testimonials__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--border-medium);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.testimonials__dot.is-active {
+  background-color: var(--navy-900);
+  transform: scale(1.2);
+}
+
+@media (max-width: 960px) {
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+}
+

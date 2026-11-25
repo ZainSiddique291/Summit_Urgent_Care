@@ -1,0 +1,26 @@
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 24px;
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--red-500);
+  color: var(--white);
+  border: 2px solid var(--white);
+  box-shadow: var(--shadow-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.back-to-top:hover {
+  background-color: var(--navy-900);
+  transform: translateY(-2px);
+}
+

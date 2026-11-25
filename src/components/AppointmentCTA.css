@@ -1,0 +1,127 @@
+.cta-banner-section {
+  padding: 10px 0 24px;
+}
+
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(105deg, #0b2247 0%, #102f61 60%, #0d264f 100%);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 26px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.cta-banner__ecg {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 240px;
+  pointer-events: none;
+}
+
+.cta-banner__left {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cta-banner__cal-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cta-banner__title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+
+.cta-banner__subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cta-banner__center {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.cta-banner__right {
+  position: relative;
+  z-index: 2;
+  padding-left: 26px;
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.cta-banner__phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  transition: opacity var(--transition-fast);
+}
+
+.cta-banner__phone-link:hover {
+  opacity: 0.9;
+}
+
+.cta-banner__phone-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cta-banner__phone-label {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cta-banner__phone-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 960px) {
+  .cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px 24px;
+  }
+
+  .cta-banner__right {
+    padding-left: 0;
+    padding-top: 16px;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+  }
+}
+

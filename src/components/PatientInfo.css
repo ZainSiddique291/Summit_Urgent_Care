@@ -1,0 +1,92 @@
+.patient-info__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.info-card {
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.info-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-ice);
+  color: var(--navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-card__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  line-height: 1.25;
+}
+
+.info-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.48;
+}
+
+.info-card__check {
+  color: var(--red-500);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.patient-info__banner {
+  margin-top: 24px;
+  background-color: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.patient-info__banner-text {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+}
+
+.patient-info__banner-text strong {
+  color: var(--navy-900);
+}
+
+@media (max-width: 960px) {
+  .patient-info__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
