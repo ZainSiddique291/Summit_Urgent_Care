@@ -41,11 +41,22 @@ export default function AppointmentModal({ isOpen, initialReason, onClose }) {
 
   useEffect(() => {
     if (!isOpen) return undefined;
+
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -56,19 +67,19 @@ export default function AppointmentModal({ isOpen, initialReason, onClose }) {
       next.patientName = 'Patient name is required.';
     }
     if (!form.phone.trim() || form.phone.replace(/\D/g, '').length < 7) {
-      next.phone = 'Valid phone number is required.';
+      next.phone = 'Valid phone number required.';
     }
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      next.email = 'Valid email address is required.';
+      next.email = 'Valid email address required.';
     }
     if (!form.preferredDate) {
-      next.preferredDate = 'Please select a preferred date.';
+      next.preferredDate = 'Select a preferred date.';
     }
     if (!form.preferredTime) {
-      next.preferredTime = 'Please select a preferred time.';
+      next.preferredTime = 'Select a preferred time.';
     }
     if (!form.reason.trim()) {
-      next.reason = 'Please select or enter a reason for your visit.';
+      next.reason = 'Select a reason for visit.';
     }
     return next;
   };
@@ -104,7 +115,7 @@ export default function AppointmentModal({ isOpen, initialReason, onClose }) {
       <div className="modal-card">
         <div className="modal-header">
           <div className="modal-header__title-wrap">
-            <Calendar size={20} className="modal-header__icon" aria-hidden="true" />
+            <Calendar size={19} className="modal-header__icon" aria-hidden="true" />
             <h2 id="appointment-modal-title" className="modal-header__title">
               Book an Appointment
             </h2>
@@ -115,51 +126,50 @@ export default function AppointmentModal({ isOpen, initialReason, onClose }) {
             aria-label="Close appointment dialog"
             onClick={onClose}
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
         {confirmed ? (
           <div className="modal-success" role="status">
-            <CheckCircle2 size={44} className="modal-success__icon" aria-hidden="true" />
-            <h3>Appointment Request Preview Confirmed</h3>
+            <CheckCircle2 size={40} className="modal-success__icon" aria-hidden="true" />
+            <h3>Appointment Request Confirmed</h3>
             <p>
               Thank you, <strong>{form.patientName}</strong>! Your requested slot for{' '}
               <strong>{form.preferredDate}</strong> at{' '}
               <strong>{form.preferredTime}</strong> ({form.reason}) has been validated.
             </p>
             <p className="modal-success__note">
-              Note: This is a frontend-only static website preview; no appointment data
-              was transmitted to a backend server. To schedule directly, please call{' '}
-              <strong>{CLINIC_INFO.phone}</strong>.
+              Note: This is a static frontend preview; no data was sent to a server. To
+              schedule by phone, call <strong>{CLINIC_INFO.phone}</strong>.
             </p>
-            <button type="button" className="btn btn--red" onClick={onClose}>
+            <button type="button" className="btn btn--red btn--sm" onClick={onClose}>
               Done
             </button>
           </div>
         ) : (
           <form className="modal-form" onSubmit={handleSubmit} noValidate>
             <p className="modal-form__intro">
-              Reserve your visit time at {CLINIC_INFO.name}. Walk-ins are also welcome daily
-              from {CLINIC_INFO.hoursRange}.
+              Reserve a time at {CLINIC_INFO.name} &mdash; walk-ins also welcome daily{' '}
+              {CLINIC_INFO.hoursRange}.
             </p>
 
-            <div className="form-field">
-              <label htmlFor="appt-name">Patient Name *</label>
-              <input
-                id="appt-name"
-                name="patientName"
-                type="text"
-                placeholder="Full name"
-                value={form.patientName}
-                onChange={handleChange}
-                aria-invalid={Boolean(errors.patientName)}
-              />
-              {errors.patientName && <span className="form-error">{errors.patientName}</span>}
-            </div>
+            <div className="modal-form__grid">
+              <div className="form-field modal-field">
+                <label htmlFor="appt-name">Patient Name *</label>
+                <input
+                  id="appt-name"
+                  name="patientName"
+                  type="text"
+                  placeholder="Full name"
+                  value={form.patientName}
+                  onChange={handleChange}
+                  aria-invalid={Boolean(errors.patientName)}
+                />
+                {errors.patientName && <span className="form-error">{errors.patientName}</span>}
+              </div>
 
-            <div className="modal-form__row">
-              <div className="form-field">
+              <div className="form-field modal-field">
                 <label htmlFor="appt-phone">Phone Number *</label>
                 <input
                   id="appt-phone"
@@ -173,8 +183,8 @@ export default function AppointmentModal({ isOpen, initialReason, onClose }) {
                 {errors.phone && <span className="form-error">{errors.phone}</span>}
               </div>
 
-              <div className="form-field">
-                <label htmlFor="appt-email">Email *</label>
+              <div className="form-field modal-field">
+                <label htmlFor="appt-email">Email Address *</label>
                 <input
                   id="appt-email"
                   name="email"
@@ -186,73 +196,73 @@ export default function AppointmentModal({ isOpen, initialReason, onClose }) {
                 />
                 {errors.email && <span className="form-error">{errors.email}</span>}
               </div>
-            </div>
 
-            <div className="modal-form__row">
-              <div className="form-field">
-                <label htmlFor="appt-date">Preferred Date *</label>
-                <input
-                  id="appt-date"
-                  name="preferredDate"
-                  type="date"
-                  min={todayStr}
-                  value={form.preferredDate}
-                  onChange={handleChange}
-                  aria-invalid={Boolean(errors.preferredDate)}
-                />
-                {errors.preferredDate && (
-                  <span className="form-error">{errors.preferredDate}</span>
-                )}
-              </div>
-
-              <div className="form-field">
-                <label htmlFor="appt-time">Preferred Time *</label>
+              <div className="form-field modal-field">
+                <label htmlFor="appt-reason">Reason for Visit *</label>
                 <select
-                  id="appt-time"
-                  name="preferredTime"
-                  value={form.preferredTime}
+                  id="appt-reason"
+                  name="reason"
+                  value={form.reason}
                   onChange={handleChange}
-                  aria-invalid={Boolean(errors.preferredTime)}
+                  aria-invalid={Boolean(errors.reason)}
                 >
-                  {TIME_SLOTS.map((slot) => (
-                    <option key={slot} value={slot}>
-                      {slot}
+                  <option value="">Select reason for visit</option>
+                  {SERVICES_LIST.map((service) => (
+                    <option key={service.id} value={service.title}>
+                      {service.title} {service.subtitle}
                     </option>
                   ))}
+                  <option value="Walk-In / Check-In">General Urgent Care Check-In</option>
+                  <option value="School / Sports Physical">School or Sports Physical</option>
                 </select>
-                {errors.preferredTime && (
-                  <span className="form-error">{errors.preferredTime}</span>
-                )}
+                {errors.reason && <span className="form-error">{errors.reason}</span>}
               </div>
-            </div>
 
-            <div className="form-field">
-              <label htmlFor="appt-reason">Reason for Visit *</label>
-              <select
-                id="appt-reason"
-                name="reason"
-                value={form.reason}
-                onChange={handleChange}
-                aria-invalid={Boolean(errors.reason)}
-              >
-                <option value="">Select reason for visit</option>
-                {SERVICES_LIST.map((service) => (
-                  <option key={service.id} value={service.title}>
-                    {service.title} {service.subtitle}
-                  </option>
-                ))}
-                <option value="Walk-In / Check-In">General Urgent Care Check-In</option>
-                <option value="School / Sports Physical">School or Sports Physical</option>
-              </select>
-              {errors.reason && <span className="form-error">{errors.reason}</span>}
+              <div className="modal-form__datetime-pair">
+                <div className="form-field modal-field">
+                  <label htmlFor="appt-date">Preferred Date *</label>
+                  <input
+                    id="appt-date"
+                    name="preferredDate"
+                    type="date"
+                    min={todayStr}
+                    value={form.preferredDate}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(errors.preferredDate)}
+                  />
+                  {errors.preferredDate && (
+                    <span className="form-error">{errors.preferredDate}</span>
+                  )}
+                </div>
+
+                <div className="form-field modal-field">
+                  <label htmlFor="appt-time">Preferred Time *</label>
+                  <select
+                    id="appt-time"
+                    name="preferredTime"
+                    value={form.preferredTime}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(errors.preferredTime)}
+                  >
+                    {TIME_SLOTS.map((slot) => (
+                      <option key={slot} value={slot}>
+                        {slot}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.preferredTime && (
+                    <span className="form-error">{errors.preferredTime}</span>
+                  )}
+                </div>
+              </div>
             </div>
 
             <div className="modal-form__actions">
-              <button type="button" className="btn btn--outline" onClick={onClose}>
+              <button type="button" className="btn btn--outline btn--sm" onClick={onClose}>
                 Cancel
               </button>
-              <button type="submit" className="btn btn--red">
-                Confirm Appointment Request
+              <button type="submit" className="btn btn--red btn--sm">
+                Submit Appointment
               </button>
             </div>
           </form>
@@ -261,4 +271,3 @@ export default function AppointmentModal({ isOpen, initialReason, onClose }) {
     </div>
   );
 }
-
