@@ -8,15 +8,15 @@ export default function TopBar() {
     <div className="topbar" role="region" aria-label="Clinic quick information">
       <div className="container topbar__inner">
         <div className="topbar__left">
-          <a href="#location" className="topbar__item">
+          <a href="#location" className="topbar__item topbar__item--address">
             <MapPin size={14} className="topbar__icon" aria-hidden="true" />
             <span>{CLINIC_INFO.addressLine}</span>
           </a>
-          <a href={CLINIC_INFO.phoneHref} className="topbar__item">
+          <a href={CLINIC_INFO.phoneHref} className="topbar__item topbar__item--phone">
             <Phone size={14} className="topbar__icon" aria-hidden="true" />
             <span>{CLINIC_INFO.phone}</span>
           </a>
-          <span className="topbar__item">
+          <span className="topbar__item topbar__item--hours">
             <Clock size={14} className="topbar__icon" aria-hidden="true" />
             <span>{CLINIC_INFO.hoursShort}</span>
           </span>
@@ -30,4 +30,3 @@ export default function TopBar() {
     </div>
   );
 }
-

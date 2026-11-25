@@ -60,7 +60,7 @@ ul {
 
 /* Shared Section Headers */
 .section {
-  padding: 64px 0;
+  padding: 60px 0;
 }
 
 .section--tinted {
@@ -70,7 +70,7 @@ ul {
 .section-header {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 38px;
+  margin: 0 auto 36px;
 }
 
 .eyebrow {
@@ -82,7 +82,7 @@ ul {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--red-500);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .eyebrow--navy {
@@ -100,18 +100,18 @@ ul {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
   font-weight: 800;
   color: var(--navy-900);
   line-height: 1.2;
   letter-spacing: -0.02em;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .section-subtitle {
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 /* Shared Buttons */
@@ -193,21 +193,30 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+/* Consistent Mobile Spacing System */
 @media (max-width: 768px) {
   html {
-    scroll-padding-top: 72px;
+    scroll-padding-top: 68px;
   }
 
   .section {
-    padding: 46px 0;
+    padding: 32px 0;
   }
 
   .section-header {
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .container {
     padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: 1.48rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.91rem;
   }
 }
 
@@ -216,17 +225,32 @@ textarea:focus-visible {
     padding: 0 14px;
   }
 
+  .section {
+    padding: 26px 0;
+  }
+
+  .section-header {
+    margin-bottom: 18px;
+  }
+
   .eyebrow {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     gap: 8px;
     letter-spacing: 0.1em;
+    margin-bottom: 6px;
   }
 
   .eyebrow__line {
     width: 24px;
   }
 
+  .section-title {
+    font-size: 1.38rem;
+    margin-bottom: 6px;
+  }
+
   .section-subtitle {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
+    line-height: 1.48;
   }
 }

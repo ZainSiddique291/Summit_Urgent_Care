@@ -147,11 +147,11 @@
   }
 }
 
-/* Tablet & Mobile: fit TopBar + Navbar + complete Hero cleanly in first screen */
+/* Tablet & Mobile: top-aligned flow with zero blank gaps above or below */
 @media (max-width: 880px) {
   .hero {
-    min-height: calc(100svh - 102px);
-    align-items: center;
+    min-height: auto;
+    align-items: flex-start;
   }
 
   .hero__bg-photo-wrap {
@@ -159,12 +159,11 @@
   }
 
   .hero__inner {
-    padding-top: clamp(14px, 2.4svh, 28px);
-    padding-bottom: clamp(14px, 2.4svh, 28px);
+    padding-top: 20px;
+    padding-bottom: 22px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: clamp(12px, 2svh, 22px);
+    gap: 18px;
   }
 
   .hero__content {
@@ -172,7 +171,7 @@
   }
 
   .hero__title {
-    font-size: clamp(1.55rem, 6vw, 2.35rem);
+    font-size: clamp(1.65rem, 5.5vw, 2.3rem);
   }
 
   .hero__mobile-media {
@@ -185,27 +184,22 @@
 
   .hero__mobile-img {
     width: 100%;
-    height: clamp(125px, 25svh, 290px);
+    height: clamp(170px, 28svh, 290px);
     object-fit: cover;
   }
 }
 
 @media (max-width: 640px) {
-  .hero {
-    min-height: calc(100svh - 132px);
-  }
-
   .hero__inner {
-    padding-top: 10px;
-    padding-bottom: 12px;
-    justify-content: center;
-    gap: 10px;
+    padding-top: 14px;
+    padding-bottom: 16px;
+    gap: 12px;
   }
 
   .hero__eyebrow {
-    font-size: 0.68rem;
+    font-size: 0.69rem;
     gap: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
   }
 
   .hero__eyebrow-line {
@@ -213,26 +207,26 @@
   }
 
   .hero__title {
-    font-size: clamp(1.38rem, 6vw, 1.85rem);
-    margin-bottom: 6px;
+    font-size: clamp(1.42rem, 6.2vw, 1.85rem);
+    margin-bottom: 7px;
   }
 
   .hero__description {
-    font-size: clamp(0.8rem, 3.2vw, 0.92rem);
-    line-height: 1.38;
-    margin-bottom: 10px;
+    font-size: 0.86rem;
+    line-height: 1.44;
+    margin-bottom: 12px;
   }
 
   .hero__buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .hero__buttons .btn {
-    padding: 9px 10px;
-    font-size: 0.78rem;
+    padding: 10px 10px;
+    font-size: 0.8rem;
     gap: 5px;
     width: 100%;
   }
@@ -252,30 +246,42 @@
   }
 
   .hero__benefit-icon {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
   }
 
   .hero__benefit-icon svg {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
   }
 
   .hero__benefit-label {
-    font-size: 0.7rem;
-    line-height: 1.2;
+    font-size: 0.72rem;
+    line-height: 1.22;
     max-width: none;
   }
 
   .hero__mobile-img {
-    height: clamp(86px, 21svh, 210px);
+    height: clamp(120px, 23svh, 200px);
   }
 }
 
 @media (max-width: 360px) {
+  .hero__inner {
+    padding-top: 12px;
+    padding-bottom: 14px;
+    gap: 10px;
+  }
+
+  .hero__description {
+    font-size: 0.81rem;
+    line-height: 1.38;
+    margin-bottom: 10px;
+  }
+
   .hero__buttons .btn {
-    padding: 8px 6px;
-    font-size: 0.72rem;
+    padding: 9px 6px;
+    font-size: 0.73rem;
     gap: 4px;
   }
 
@@ -284,6 +290,6 @@
   }
 
   .hero__mobile-img {
-    height: 86px;
+    height: 102px;
   }
 }

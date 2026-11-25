@@ -1,6 +1,6 @@
 .about {
   background-color: var(--white);
-  padding-top: 26px;
+  padding-top: 22px;
 }
 
 .about__grid {
@@ -34,25 +34,25 @@
 
 .about__title {
   font-family: var(--font-display);
-  font-size: clamp(1.45rem, 2.3vw, 1.9rem);
+  font-size: clamp(1.42rem, 2.3vw, 1.9rem);
   font-weight: 800;
   color: var(--navy-900);
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .about__desc {
   font-size: 0.94rem;
   color: var(--text-secondary);
   line-height: 1.55;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .about__list {
   display: flex;
   flex-direction: column;
   gap: 9px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .about__list-item {
@@ -94,7 +94,7 @@
   position: relative;
   z-index: 2;
   color: var(--navy-900);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .hours-card__eyebrow {
@@ -103,7 +103,7 @@
   font-size: 0.98rem;
   font-weight: 700;
   color: var(--navy-900);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .hours-card__time {
@@ -114,7 +114,7 @@
   font-weight: 800;
   color: var(--navy-900);
   letter-spacing: -0.02em;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .hours-card__note {
@@ -151,19 +151,19 @@
 
 /* About Us Commitment Block */
 .about__mission {
-  margin-top: 28px;
+  margin-top: 24px;
   background-color: var(--navy-50);
   border: 1px solid var(--border-light);
   border-left: 4px solid var(--red-500);
   border-radius: var(--radius-md);
-  padding: 20px 24px;
+  padding: 18px 22px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .about__mission-badge {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -171,9 +171,9 @@
 }
 
 .about__mission-text {
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 @media (max-width: 1020px) {
@@ -187,14 +187,18 @@
 
   .hours-card {
     grid-column: 1 / -1;
-    padding: 28px 20px;
+    padding: 24px 20px;
   }
 }
 
 @media (max-width: 720px) {
+  .about {
+    padding-top: 8px;
+  }
+
   .about__grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .about__photo-wrap {
@@ -203,17 +207,45 @@
     min-height: unset;
   }
 
+  .about__content {
+    padding: 0;
+  }
+
+  .about__list {
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+
+  .about__list-item {
+    font-size: 0.9rem;
+  }
+
+  .hours-card {
+    padding: 20px 18px;
+  }
+
+  .hours-card__icon-wrap svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hours-card__time {
+    font-size: 1.45rem;
+  }
+
   .about__mission {
-    padding: 16px 18px;
+    margin-top: 16px;
+    padding: 15px 16px;
+  }
+
+  .about__mission-text {
+    font-size: 0.89rem;
+    line-height: 1.52;
   }
 }
 
 @media (max-width: 420px) {
   .about__cta {
     width: 100%;
-  }
-
-  .hours-card__time {
-    font-size: 1.45rem;
   }
 }
