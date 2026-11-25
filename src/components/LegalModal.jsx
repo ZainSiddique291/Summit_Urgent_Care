@@ -30,11 +30,21 @@ const LEGAL_CONTENT = {
 export default function LegalModal({ mode, onClose }) {
   useEffect(() => {
     if (!mode) return undefined;
+
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
     const onKey = (e) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
   }, [mode, onClose]);
 
   if (!mode || !LEGAL_CONTENT[mode]) return null;
@@ -61,7 +71,7 @@ export default function LegalModal({ mode, onClose }) {
       <div className="modal-card">
         <div className="modal-header">
           <div className="modal-header__title-wrap">
-            <IconComp size={20} className="modal-header__icon" aria-hidden="true" />
+            <IconComp size={19} className="modal-header__icon" aria-hidden="true" />
             <h2 id="legal-modal-title" className="modal-header__title">
               {current.title}
             </h2>
@@ -72,19 +82,19 @@ export default function LegalModal({ mode, onClose }) {
             aria-label="Close modal"
             onClick={onClose}
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
         <div className="modal-form">
           {current.paragraphs.map((text, idx) => (
-            <p key={idx} className="modal-form__intro" style={{ lineHeight: 1.65 }}>
+            <p key={idx} className="modal-form__intro" style={{ lineHeight: 1.6 }}>
               {text}
             </p>
           ))}
 
           {mode === 'sitemap' && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
+            <div className="legal-modal__links">
               {[...NAV_LINKS, { id: 'testimonials', label: 'Testimonials' }, { id: 'location', label: 'Location & Map' }].map(
                 (item) => (
                   <button
@@ -110,4 +120,3 @@ export default function LegalModal({ mode, onClose }) {
     </div>
   );
 }
-

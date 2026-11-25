@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
 }
 
 .info-card__header {
@@ -87,6 +88,20 @@
 @media (max-width: 960px) {
   .patient-info__grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
+@media (max-width: 540px) {
+  .info-card {
+    padding: 20px 16px;
+  }
+
+  .patient-info__banner {
+    padding: 16px;
+  }
+
+  .patient-info__banner .btn {
+    width: 100%;
+  }
+}

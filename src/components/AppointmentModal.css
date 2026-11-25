@@ -15,7 +15,8 @@
   width: 100%;
   max-width: 620px;
   max-height: calc(100dvh - 28px);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -39,6 +40,7 @@
   display: flex;
   align-items: center;
   gap: 9px;
+  min-width: 0;
 }
 
 .modal-header__icon {
@@ -113,6 +115,7 @@
   padding: 8px 11px;
   font-size: 0.89rem;
   min-height: 38px;
+  max-width: 100%;
 }
 
 .modal-field .form-error {
@@ -128,8 +131,15 @@
   margin-top: 2px;
 }
 
+.legal-modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
 .modal-success {
-  padding: 24px 22px;
+  padding: 24px 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -158,10 +168,10 @@
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 9px 12px;
-  font-size: 0.8rem !important;
+  font-size: 0.8rem;
 }
 
-/* Mobile Layout: keep compact & zero internal scrollbars */
+/* Mobile single-column modal layout, compact enough to avoid scrollbars on standard phones */
 @media (max-width: 540px) {
   .modal-backdrop {
     padding: 10px;
@@ -189,14 +199,10 @@
     font-size: 0.8rem;
   }
 
-  .modal-form__grid {
+  .modal-form__grid,
+  .modal-form__datetime-pair {
     grid-template-columns: 1fr;
     gap: 8px;
-  }
-
-  .modal-form__datetime-pair {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
   }
 
   .modal-field label {
@@ -207,7 +213,7 @@
   .modal-field select {
     padding: 7px 10px;
     font-size: 0.86rem;
-    min-height: 35px;
+    min-height: 36px;
   }
 
   .modal-form__actions {
@@ -217,12 +223,11 @@
 
   .modal-form__actions .btn {
     flex: 1;
-    padding: 9px 12px;
-    font-size: 0.85rem;
+    padding: 9px 10px;
+    font-size: 0.84rem;
   }
 }
 
-/* Extra-short viewport safeguard */
 @media (max-height: 600px) {
   .modal-header {
     padding: 9px 16px;

@@ -29,11 +29,12 @@
   flex-direction: column;
   justify-content: center;
   padding: 6px 4px;
+  min-width: 0;
 }
 
 .about__title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.3vw, 1.9rem);
+  font-size: clamp(1.45rem, 2.3vw, 1.9rem);
   font-weight: 800;
   color: var(--navy-900);
   line-height: 1.2;
@@ -86,6 +87,7 @@
   justify-content: center;
   text-align: center;
   box-shadow: var(--shadow-xs);
+  min-width: 0;
 }
 
 .hours-card__icon-wrap {
@@ -192,12 +194,26 @@
 @media (max-width: 720px) {
   .about__grid {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 20px;
   }
 
   .about__photo-wrap {
-    height: 260px;
+    aspect-ratio: 16 / 10;
+    height: auto;
     min-height: unset;
+  }
+
+  .about__mission {
+    padding: 16px 18px;
   }
 }
 
+@media (max-width: 420px) {
+  .about__cta {
+    width: 100%;
+  }
+
+  .hours-card__time {
+    font-size: 1.45rem;
+  }
+}
