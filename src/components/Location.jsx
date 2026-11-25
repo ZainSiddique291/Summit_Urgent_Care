@@ -5,7 +5,7 @@ import './Location.css';
 
 export default function Location() {
   return (
-    <section id="location" className="section section--tinted location">
+    <section id="location" className="section location">
       <div className="container">
         <div className="section-header">
           <div className="eyebrow">

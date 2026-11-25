@@ -11,7 +11,7 @@ const INFO_ICONS = {
 
 export default function PatientInfo({ onOpenAppointment }) {
   return (
-    <section id="patient-info" className="section section--tinted patient-info">
+    <section id="patient-info" className="section patient-info">
       <div className="container">
         <div className="section-header">
           <div className="eyebrow">

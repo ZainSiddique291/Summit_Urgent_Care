@@ -17,7 +17,7 @@ export default function Testimonials() {
   const currentReviews = TESTIMONIAL_PAGES[activePage];
 
   return (
-    <section id="testimonials" className="section testimonials">
+    <section id="testimonials" className="section section--tinted testimonials">
       <div className="container">
         <div className="section-header testimonials__header">
           <div className="eyebrow">

@@ -16,7 +16,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faqs" className="section faq">
+    <section id="faqs" className="section section--tinted faq">
       <div className="container">
         <div className="faq__grid">
           <div className="faq__intro">

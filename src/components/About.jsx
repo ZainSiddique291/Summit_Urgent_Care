@@ -13,7 +13,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="section about">
+    <section id="about" className="section section--tinted about">
       <div className="container">
         <div className="about__grid">
           {/* Left: Female doctor examining/caring for child */}
