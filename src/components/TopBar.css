@@ -54,75 +54,81 @@ a.topbar__item:hover {
   }
 }
 
-/* Intentional 2x2 organized mobile quick-info bar */
+/* Mobile: single clean horizontal line with address and phone only */
 @media (max-width: 700px) {
   .topbar {
-    font-size: 0.72rem;
-    line-height: 1.25;
+    font-size: 0.74rem;
+    line-height: 1.2;
   }
 
   .topbar__inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
     align-items: center;
-    min-height: unset;
-    gap: 5px 10px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    min-height: 32px;
+    gap: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .topbar__left {
-    display: contents;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .topbar__item--hours,
+  .topbar__right {
+    display: none;
   }
 
   .topbar__item {
     gap: 5px;
-    white-space: normal;
+    white-space: nowrap;
+  }
+
+  .topbar__item--address {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .topbar__item--address span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .topbar__item--phone {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: #ffffff;
   }
 
   .topbar__icon {
     width: 12px;
     height: 12px;
   }
-
-  .topbar__item--address {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .topbar__item--phone {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    font-weight: 700;
-    color: #ffffff;
-    white-space: nowrap;
-  }
-
-  .topbar__item--hours {
-    grid-column: 1;
-    grid-row: 2;
-    color: rgba(255, 255, 255, 0.86);
-  }
-
-  .topbar__right {
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: end;
-    background-color: rgba(255, 255, 255, 0.12);
-    padding: 2px 8px;
-    border-radius: var(--radius-pill);
-    font-size: 0.68rem;
-    white-space: nowrap;
-  }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 360px) {
   .topbar {
-    font-size: 0.68rem;
+    font-size: 0.67rem;
   }
 
-  .topbar__inner {
-    gap: 4px 6px;
+  .topbar__left {
+    gap: 6px;
+  }
+
+  .topbar__item {
+    gap: 4px;
+  }
+
+  .topbar__icon {
+    width: 11px;
+    height: 11px;
   }
 }
