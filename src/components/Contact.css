@@ -8,7 +8,7 @@
 .contact-info-card {
   background-color: var(--navy-900);
   color: var(--white);
-  border-radius: var(--radius-lg);
+  border-radius: var(--card-radius);
   padding: 28px 26px;
   display: flex;
   flex-direction: column;
@@ -93,10 +93,10 @@ a.contact-info-card__value:hover {
 
 .contact-form-card {
   background-color: var(--white);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   padding: 28px 26px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--card-shadow);
   min-width: 0;
 }
 

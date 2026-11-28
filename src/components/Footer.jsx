@@ -3,108 +3,190 @@ import {
   MapPin,
   Phone,
   Mail,
+  Clock,
   ArrowRight,
   Facebook,
-  Globe,
   Instagram,
   Linkedin,
-  Youtube,
+  ChevronRight,
 } from 'lucide-react';
 import logo from '../assets/logo.svg';
-import { CLINIC_INFO } from '../data/clinicData';
+import { CLINIC_INFO, NAV_LINKS, SERVICES_LIST } from '../data/clinicData';
 import './Footer.css';
 
 export default function Footer({ onOpenAppointment, onOpenLegal }) {
   const socialLinks = [
     { name: 'Facebook', icon: Facebook, href: '#contact' },
-    { name: 'Google Profile', icon: Globe, href: '#location' },
     { name: 'Instagram', icon: Instagram, href: '#testimonials' },
     { name: 'LinkedIn', icon: Linkedin, href: '#about' },
-    { name: 'YouTube', icon: Youtube, href: '#services' },
   ];
+
+  const quickLinks = [
+    ...NAV_LINKS,
+    { id: 'testimonials', label: 'Patient Reviews' },
+    { id: 'location', label: 'Location & Directions' },
+  ];
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <footer className="footer">
       <div className="footer__main">
-        <div className="container footer__inner">
-          {/* Left: Logo + Tagline + Socials */}
-          <div className="footer__brand-col">
-            <a href="#home" className="footer__logo-badge" aria-label="Summit Urgent Care Home">
+        <div className="container footer__grid">
+          {/* Column 1: Brand Identity, Summary, Socials & Primary CTA */}
+          <div className="footer__col footer__brand-col">
+            <a
+              href="#home"
+              className="footer__logo-badge"
+              aria-label="Summit Urgent Care Home"
+              onClick={(e) => scrollToSection(e, 'home')}
+            >
               <img src={logo} alt="Summit Urgent Care" className="footer__logo" />
             </a>
             <p className="footer__tagline">{CLINIC_INFO.tagline}</p>
+            <p className="footer__summary">{CLINIC_INFO.footerSummary}</p>
 
-            <div className="footer__socials" aria-label="Social media links">
-              {socialLinks.map((item) => {
-                const IconComp = item.icon;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="footer__social-btn"
-                    aria-label={item.name}
-                    title={item.name}
-                  >
-                    <IconComp size={16} aria-hidden="true" />
-                  </a>
-                );
-              })}
+            <div className="footer__brand-actions">
+              <button
+                type="button"
+                className="btn btn--red btn--sm footer__cta"
+                onClick={() => onOpenAppointment('')}
+              >
+                <span>Book Appointment</span>
+                <ArrowRight size={15} aria-hidden="true" />
+              </button>
+
+              <div className="footer__socials" aria-label="Clinic social links">
+                {socialLinks.map((item) => {
+                  const IconComp = item.icon;
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="footer__social-btn"
+                      aria-label={item.name}
+                      title={item.name}
+                      onClick={(e) => scrollToSection(e, item.href.replace('#', ''))}
+                    >
+                      <IconComp size={15} aria-hidden="true" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Right: Address, Phone, Email, CTA */}
-          <div className="footer__contact-col">
+          {/* Column 2: Quick Navigation Links */}
+          <div className="footer__col">
+            <h3 className="footer__heading">Quick Links</h3>
+            <ul className="footer__link-list">
+              {quickLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className="footer__nav-link"
+                    onClick={(e) => scrollToSection(e, link.id)}
+                  >
+                    <ChevronRight size={14} className="footer__link-arrow" aria-hidden="true" />
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Existing Urgent Care Services */}
+          <div className="footer__col">
+            <h3 className="footer__heading">Our Services</h3>
+            <ul className="footer__link-list">
+              {SERVICES_LIST.map((service) => (
+                <li key={service.id}>
+                  <a
+                    href="#services"
+                    className="footer__nav-link"
+                    onClick={(e) => scrollToSection(e, 'services')}
+                  >
+                    <ChevronRight size={14} className="footer__link-arrow" aria-hidden="true" />
+                    <span>{service.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Get in Touch (Contact & Hours) */}
+          <div className="footer__col">
+            <h3 className="footer__heading">Get in Touch</h3>
             <ul className="footer__contact-list">
               <li className="footer__contact-item">
-                <MapPin size={17} className="footer__contact-icon" aria-hidden="true" />
-                <span>
-                  {CLINIC_INFO.addressShort},<br />
-                  {CLINIC_INFO.cityStateZip}
+                <span className="footer__contact-icon-box" aria-hidden="true">
+                  <Phone size={15} />
                 </span>
+                <div>
+                  <span className="footer__contact-label">Phone</span>
+                  <a href={CLINIC_INFO.phoneHref} className="footer__contact-link">
+                    {CLINIC_INFO.phone}
+                  </a>
+                </div>
               </li>
+
               <li className="footer__contact-item">
-                <Phone size={17} className="footer__contact-icon" aria-hidden="true" />
-                <a href={CLINIC_INFO.phoneHref}>{CLINIC_INFO.phone}</a>
+                <span className="footer__contact-icon-box" aria-hidden="true">
+                  <Mail size={15} />
+                </span>
+                <div>
+                  <span className="footer__contact-label">Email</span>
+                  <a href={`mailto:${CLINIC_INFO.email}`} className="footer__contact-link">
+                    {CLINIC_INFO.email}
+                  </a>
+                </div>
               </li>
+
               <li className="footer__contact-item">
-                <Mail size={17} className="footer__contact-icon" aria-hidden="true" />
-                <a href={`mailto:${CLINIC_INFO.email}`}>{CLINIC_INFO.email}</a>
+                <span className="footer__contact-icon-box" aria-hidden="true">
+                  <Clock size={15} />
+                </span>
+                <div>
+                  <span className="footer__contact-label">Opening Hours</span>
+                  <span>{CLINIC_INFO.hoursShort}</span>
+                </div>
+              </li>
+
+              <li className="footer__contact-item">
+                <span className="footer__contact-icon-box" aria-hidden="true">
+                  <MapPin size={15} />
+                </span>
+                <div>
+                  <span className="footer__contact-label">Clinic Address</span>
+                  <a
+                    href="#location"
+                    className="footer__contact-link"
+                    onClick={(e) => scrollToSection(e, 'location')}
+                  >
+                    {CLINIC_INFO.addressShort}, {CLINIC_INFO.cityStateZip}
+                  </a>
+                </div>
               </li>
             </ul>
-
-            <button
-              type="button"
-              className="btn btn--red btn--sm footer__cta"
-              onClick={() => onOpenAppointment('')}
-            >
-              <span>Book Appointment</span>
-              <ArrowRight size={15} aria-hidden="true" />
-            </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom Copyright Bar */}
+      {/* Separated Bottom Copyright & Legal Bar */}
       <div className="footer__bottom">
-        <svg
-          className="footer__ecg"
-          viewBox="0 0 220 50"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M0 28 H65 L75 13 L85 40 L96 6 L106 33 L114 28 H220"
-            stroke="rgba(255,255,255,0.12)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-
         <div className="container footer__bottom-inner">
-          <p className="footer__copyright">
-            &copy; {CLINIC_INFO.copyrightYear} {CLINIC_INFO.name}. All Rights Reserved.
-          </p>
+          <div className="footer__bottom-meta">
+            <p className="footer__copyright">
+              &copy; {CLINIC_INFO.copyrightYear} {CLINIC_INFO.name}. All Rights Reserved.
+            </p>
+            <p className="footer__disclaimer">
+              Non-life-threatening urgent care only. In a medical emergency, call 911.
+            </p>
+          </div>
 
           <nav className="footer__legal" aria-label="Legal and site navigation">
             <button
@@ -114,7 +196,7 @@ export default function Footer({ onOpenAppointment, onOpenLegal }) {
             >
               Privacy Policy
             </button>
-            <span className="footer__legal-sep" aria-hidden="true">|</span>
+            <span className="footer__legal-sep" aria-hidden="true">&middot;</span>
             <button
               type="button"
               className="footer__legal-link"
@@ -122,7 +204,7 @@ export default function Footer({ onOpenAppointment, onOpenLegal }) {
             >
               Terms of Service
             </button>
-            <span className="footer__legal-sep" aria-hidden="true">|</span>
+            <span className="footer__legal-sep" aria-hidden="true">&middot;</span>
             <button
               type="button"
               className="footer__legal-link"
@@ -136,4 +218,3 @@ export default function Footer({ onOpenAppointment, onOpenLegal }) {
     </footer>
   );
 }
-

@@ -24,6 +24,14 @@ body {
   overflow-x: clip;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--navy-900);
+}
+
 .app-shell {
   width: 100%;
   overflow-x: clip;
@@ -58,16 +66,22 @@ ul {
   padding: 0 var(--container-pad);
 }
 
-/* Shared Section Headers */
+/* Section Backgrounds & Rhythm */
 .section {
   background-color: var(--white);
   padding: var(--section-py-desktop) 0;
 }
 
 .section--tinted {
-  background-color: #f1f6fd;
-  border-top: 1px solid #e1ebf7;
-  border-bottom: 1px solid #e1ebf7;
+  background-color: var(--bg-tint);
+  border-top: 1px solid #e4ecf7;
+  border-bottom: 1px solid #e4ecf7;
+}
+
+.section--soft {
+  background-color: var(--bg-page);
+  border-top: 1px solid #e8eef6;
+  border-bottom: 1px solid #e8eef6;
 }
 
 .section-header {
@@ -76,7 +90,7 @@ ul {
   margin: 0 auto 40px;
 }
 
-/* Desktop & Laptop: section-by-section viewport framing without locking taller content */
+/* Desktop & Laptop: viewport-aware framing without locking taller content */
 @media (min-width: 1024px) and (min-height: 660px) {
   html {
     scroll-padding-top: 70px;
@@ -124,18 +138,26 @@ ul {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
   font-weight: 800;
   color: var(--navy-900);
   line-height: 1.2;
   letter-spacing: -0.02em;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .section-subtitle {
   font-size: 0.98rem;
   color: var(--text-secondary);
-  line-height: 1.55;
+  line-height: 1.58;
+}
+
+/* Standardized Card Surface */
+.ui-card {
+  background-color: var(--white);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
 }
 
 /* Shared Buttons */
@@ -144,9 +166,10 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
+  min-height: 44px;
+  padding: 11px 22px;
   border-radius: var(--radius-pill);
-  font-size: 0.94rem;
+  font-size: 0.93rem;
   font-weight: 600;
   cursor: pointer;
   border: 1.5px solid transparent;
@@ -203,8 +226,41 @@ ul {
 }
 
 .btn--sm {
+  min-height: 40px;
   padding: 9px 18px;
   font-size: 0.875rem;
+}
+
+/* Subtle Section Entrance Animation */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .btn,
+  .service-card,
+  .testimonial-card {
+    transition: none;
+  }
 }
 
 /* Focus Accessibility */
@@ -234,7 +290,7 @@ textarea:focus-visible {
   }
 
   .section {
-    padding: 42px 0;
+    padding: 44px 0;
   }
 
   .section-header {
@@ -260,7 +316,7 @@ textarea:focus-visible {
   }
 
   .section {
-    padding: 42px 0;
+    padding: var(--section-py-mobile) 0;
   }
 
   .section-header {

@@ -24,7 +24,7 @@ export default function App() {
   const [legalMode, setLegalMode] = useState(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const navObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -40,10 +40,31 @@ export default function App() {
 
     TRACKED_SECTIONS.forEach((id) => {
       const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      if (el) navObserver.observe(el);
     });
 
-    return () => observer.disconnect();
+    const revealElements = document.querySelectorAll('.reveal-section');
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: '0px 0px 80px 0px',
+        threshold: 0.01,
+      },
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+    return () => {
+      navObserver.disconnect();
+      revealObserver.disconnect();
+    };
   }, []);
 
   const openAppointmentModal = (reason = '') => {
@@ -87,4 +108,3 @@ export default function App() {
     </div>
   );
 }
-

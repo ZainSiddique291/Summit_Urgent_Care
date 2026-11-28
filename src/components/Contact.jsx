@@ -57,7 +57,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section section--tinted contact">
+    <section id="contact" className="section section--tinted contact reveal-section">
       <div className="container">
         <div className="section-header">
           <div className="eyebrow">

@@ -1,6 +1,8 @@
 export const CLINIC_INFO = {
   name: 'Summit Urgent Care',
   tagline: 'Fast Care. Healthier You.',
+  footerSummary:
+    'Compassionate, walk-in medical care for non-life-threatening illnesses and minor injuries — serving patients and families 7 days a week.',
   addressLine: '123 Health Way, New York, NY 10001',
   addressShort: '123 Health Way',
   cityStateZip: 'New York, NY 10001',
@@ -39,43 +41,43 @@ export const SERVICES_LIST = [
   {
     id: 'injury-care',
     title: 'Injury Care',
-    subtitle: '(Sprains, Cuts, etc.)',
-    description: 'Prompt evaluation and treatment for sprains, strains, minor fractures, burns, and lacerations.',
+    subtitle: 'Sprains, Cuts & Strains',
+    description: 'Prompt evaluation and treatment for sprains, minor fractures, burns, and cuts.',
     icon: 'Bandage',
   },
   {
     id: 'illness-treatment',
     title: 'Illness Treatment',
-    subtitle: '(Cold, Flu, etc.)',
-    description: 'Fast relief for colds, seasonal flu, strep throat, ear infections, sinus issues, and fevers.',
+    subtitle: 'Cold, Flu & Fevers',
+    description: 'Fast medical relief for seasonal flu, colds, strep throat, fevers, and ear infections.',
     icon: 'Stethoscope',
   },
   {
     id: 'vaccinations',
     title: 'Vaccinations',
-    subtitle: '(Flu, COVID-19, etc.)',
-    description: 'Walk-in seasonal flu shots, COVID-19 boosters, tetanus shots, and routine immunizations.',
+    subtitle: 'Flu, COVID-19 & Boosters',
+    description: 'Convenient walk-in flu shots, COVID-19 boosters, tetanus, and routine vaccines.',
     icon: 'Syringe',
   },
   {
     id: 'lab-testing',
     title: 'Lab Testing',
-    subtitle: '(On-Site)',
-    description: 'Rapid strep, flu, COVID-19, urinalysis, and basic blood panels with quick on-site results.',
+    subtitle: 'Rapid On-Site Panels',
+    description: 'Same-visit rapid strep, flu, COVID-19 testing, urinalysis, and basic blood panels.',
     icon: 'FlaskConical',
   },
   {
     id: 'health-screenings',
     title: 'Health Screenings',
-    subtitle: '(BP, Diabetes, etc.)',
-    description: 'Blood pressure checks, glucose screening, cholesterol monitoring, and physical exams.',
+    subtitle: 'BP, Glucose & Physicals',
+    description: 'Routine blood pressure checks, diabetes screening, cholesterol, and physical exams.',
     icon: 'HeartPulse',
   },
   {
     id: 'minor-procedures',
     title: 'Minor Procedures',
-    subtitle: '(Suturing, etc.)',
-    description: 'Stitches, wound care, splinter or foreign body removal, and abscess drainage on-site.',
+    subtitle: 'Suturing & Wound Care',
+    description: 'On-site stitches, sterile wound care, splinter removal, and minor abscess drainage.',
     icon: 'BriefcaseMedical',
   },
 ];
@@ -91,69 +93,87 @@ export const WHY_CHOOSE_BENEFITS = [
 export const TESTIMONIAL_PAGES = [
   [
     {
-      id: 'sarah',
-      name: 'Sarah M.',
-      quote: 'Fast, professional and friendly! Highly recommend Summit Urgent Care.',
+      id: 'demo-1',
+      name: 'Sample Patient A',
+      visitType: 'Demo Review • Walk-In Visit',
+      quote:
+        'Fast, professional, and welcoming staff. The check-in took minutes and every step was explained clearly.',
       rating: 5,
       photoKey: 'sarah',
     },
     {
-      id: 'david',
-      name: 'David K.',
-      quote: 'Great experience. The staff was caring and got me in quickly.',
+      id: 'demo-2',
+      name: 'Sample Patient B',
+      visitType: 'Demo Review • Injury Care',
+      quote:
+        'Great clinic experience. The care team was attentive, thorough, and got me treated quickly.',
       rating: 5,
       photoKey: 'david',
     },
     {
-      id: 'emily',
-      name: 'Emily R.',
-      quote: 'Convenient, clean and excellent care. Will definitely come back!',
+      id: 'demo-3',
+      name: 'Sample Patient C',
+      visitType: 'Demo Review • Family Visit',
+      quote:
+        'Convenient hours, spotless exam rooms, and compassionate care from check-in through discharge.',
       rating: 5,
       photoKey: 'emily',
     },
   ],
   [
     {
-      id: 'david-2',
-      name: 'Michael T.',
-      quote: 'Visited on a Sunday morning with a sprained ankle and was treated within 20 minutes.',
+      id: 'demo-4',
+      name: 'Sample Patient D',
+      visitType: 'Demo Review • Weekend Care',
+      quote:
+        'Visited on a Sunday morning for a sprain and saw a clinician promptly without an appointment.',
       rating: 5,
       photoKey: 'david',
     },
     {
-      id: 'sarah-2',
-      name: 'Rachel L.',
-      quote: 'The nurse practitioner was wonderful with my daughter. Calm, spotless clinic.',
+      id: 'demo-5',
+      name: 'Sample Patient E',
+      visitType: 'Demo Review • Pediatric Visit',
+      quote:
+        'Calm, patient-centered care that put our family at ease right away during a stressful fever.',
       rating: 5,
       photoKey: 'sarah',
     },
     {
-      id: 'emily-2',
-      name: 'Lauren P.',
-      quote: 'Transparent pricing and no surprise wait times. Truly patient-first urgent care.',
+      id: 'demo-6',
+      name: 'Sample Patient F',
+      visitType: 'Demo Review • Lab Testing',
+      quote:
+        'Clear pricing, friendly front desk, and quick on-site rapid lab results in a single visit.',
       rating: 5,
       photoKey: 'emily',
     },
   ],
   [
     {
-      id: 'emily-3',
-      name: 'Hannah W.',
-      quote: 'Easy online booking and same-day rapid strep test. Felt heard and well cared for.',
+      id: 'demo-7',
+      name: 'Sample Patient G',
+      visitType: 'Demo Review • Online Booking',
+      quote:
+        'Easy online time reservation and minimal wait time upon arrival. Very organized clinic team.',
       rating: 5,
       photoKey: 'emily',
     },
     {
-      id: 'sarah-3',
-      name: 'Natalie G.',
-      quote: 'Cleanest clinic in the neighborhood with genuinely compassionate medical staff.',
+      id: 'demo-8',
+      name: 'Sample Patient H',
+      visitType: 'Demo Review • Illness Care',
+      quote:
+        'Clean, modern facility in the neighborhood with genuinely supportive medical professionals.',
       rating: 5,
       photoKey: 'sarah',
     },
     {
-      id: 'david-3',
-      name: 'Daniel B.',
-      quote: 'Got my flu shot and blood pressure check during lunch break without any hassle.',
+      id: 'demo-9',
+      name: 'Sample Patient I',
+      visitType: 'Demo Review • Vaccination',
+      quote:
+        'Stopped by for a seasonal flu shot and blood pressure check during lunch with zero hassle.',
       rating: 5,
       photoKey: 'david',
     },
@@ -246,4 +266,3 @@ export const LOCATION_DETAILS = {
   ],
   directionsUrl: 'https://maps.google.com/?q=123+Health+Way,+New+York,+NY+10001',
 };
-

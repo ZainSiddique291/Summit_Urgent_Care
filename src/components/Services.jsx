@@ -21,7 +21,7 @@ const SERVICE_ICONS = {
 
 export default function Services({ onSelectService }) {
   return (
-    <section id="services" className="section services">
+    <section id="services" className="section section--soft services reveal-section">
       <div className="container">
         <div className="section-header">
           <div className="eyebrow">
@@ -46,8 +46,10 @@ export default function Services({ onSelectService }) {
                 onClick={() => onSelectService(service.title)}
                 title={`Book ${service.title}`}
               >
-                <div className="service-card__icon-box" aria-hidden="true">
-                  <IconComp size={28} strokeWidth={1.85} />
+                <div className="service-card__icon-wrap" aria-hidden="true">
+                  <div className="service-card__icon-box">
+                    <IconComp size={26} strokeWidth={1.85} />
+                  </div>
                 </div>
                 <h3 className="service-card__title">{service.title}</h3>
                 <span className="service-card__sub">{service.subtitle}</span>
@@ -60,4 +62,3 @@ export default function Services({ onSelectService }) {
     </section>
   );
 }
-

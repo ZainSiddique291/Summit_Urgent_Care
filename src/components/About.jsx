@@ -13,7 +13,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="section section--tinted about">
+    <section id="about" className="section about reveal-section">
       <div className="container">
         <div className="about__grid">
           {/* Left: Female doctor examining/caring for child */}
@@ -71,7 +71,6 @@ export default function About() {
             <p className="hours-card__time">{CLINIC_INFO.hoursRange}</p>
             <p className="hours-card__note">Walk-ins Welcome!</p>
 
-            {/* Subtle medical heart pulse watermark + red ribbon accent */}
             <svg
               className="hours-card__watermark"
               viewBox="0 0 180 120"
@@ -108,4 +107,3 @@ export default function About() {
     </section>
   );
 }
-
