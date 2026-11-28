@@ -147,11 +147,11 @@
   }
 }
 
-/* Tablet & Mobile: top-aligned flow with zero blank gaps above or below */
+/* Tablet & Mobile: fill initial screen cleanly without next-section peek */
 @media (max-width: 880px) {
   .hero {
-    min-height: auto;
-    align-items: flex-start;
+    min-height: calc(100svh - 108px);
+    align-items: center;
   }
 
   .hero__bg-photo-wrap {
@@ -159,11 +159,12 @@
   }
 
   .hero__inner {
-    padding-top: 24px;
-    padding-bottom: 28px;
+    padding-top: clamp(18px, 3svh, 32px);
+    padding-bottom: clamp(20px, 3.2svh, 32px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    gap: clamp(16px, 2.8svh, 28px);
   }
 
   .hero__content {
@@ -184,22 +185,34 @@
 
   .hero__mobile-img {
     width: 100%;
-    height: clamp(175px, 28svh, 290px);
+    height: clamp(175px, 29svh, 320px);
     object-fit: cover;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: calc(100svh - 98px);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: calc(100svh - 94px);
   }
 }
 
 @media (max-width: 640px) {
   .hero__inner {
-    padding-top: 18px;
-    padding-bottom: 22px;
-    gap: 15px;
+    padding-top: clamp(14px, 2.5svh, 26px);
+    padding-bottom: clamp(16px, 2.8svh, 28px);
+    gap: clamp(14px, 2.4svh, 24px);
   }
 
   .hero__eyebrow {
     font-size: 0.7rem;
     gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: clamp(6px, 1.2svh, 10px);
   }
 
   .hero__eyebrow-line {
@@ -207,21 +220,21 @@
   }
 
   .hero__title {
-    font-size: clamp(1.45rem, 6.2vw, 1.88rem);
-    margin-bottom: 9px;
+    font-size: clamp(1.48rem, 6.2vw, 1.92rem);
+    margin-bottom: clamp(8px, 1.4svh, 12px);
   }
 
   .hero__description {
-    font-size: 0.88rem;
+    font-size: clamp(0.86rem, 3.3vw, 0.94rem);
     line-height: 1.48;
-    margin-bottom: 14px;
+    margin-bottom: clamp(12px, 2svh, 18px);
   }
 
   .hero__buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-bottom: 14px;
+    margin-bottom: clamp(12px, 2svh, 18px);
   }
 
   .hero__buttons .btn {
@@ -262,7 +275,13 @@
   }
 
   .hero__mobile-img {
-    height: clamp(120px, 23svh, 200px);
+    height: clamp(150px, 27svh, 270px);
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    min-height: calc(100svh - 88px);
   }
 }
 
@@ -270,13 +289,13 @@
   .hero__inner {
     padding-top: 12px;
     padding-bottom: 14px;
-    gap: 10px;
+    gap: 12px;
   }
 
   .hero__description {
-    font-size: 0.81rem;
-    line-height: 1.38;
-    margin-bottom: 10px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
   }
 
   .hero__buttons .btn {
@@ -290,6 +309,6 @@
   }
 
   .hero__mobile-img {
-    height: 102px;
+    height: clamp(135px, 24svh, 220px);
   }
 }
