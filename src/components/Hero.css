@@ -147,11 +147,11 @@
   }
 }
 
-/* Tablet & Mobile: fill initial screen cleanly without next-section peek */
+/* Tablet & Mobile: top-aligned Hero close to navbar while keeping next section below fold */
 @media (max-width: 880px) {
   .hero {
     min-height: calc(100svh - 108px);
-    align-items: center;
+    align-items: flex-start;
   }
 
   .hero__bg-photo-wrap {
@@ -159,12 +159,12 @@
   }
 
   .hero__inner {
-    padding-top: clamp(18px, 3svh, 32px);
-    padding-bottom: clamp(20px, 3.2svh, 32px);
+    padding-top: 20px;
+    padding-bottom: 24px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: clamp(16px, 2.8svh, 28px);
+    justify-content: flex-start;
+    gap: 20px;
   }
 
   .hero__content {
@@ -204,15 +204,15 @@
 
 @media (max-width: 640px) {
   .hero__inner {
-    padding-top: clamp(14px, 2.5svh, 26px);
-    padding-bottom: clamp(16px, 2.8svh, 28px);
-    gap: clamp(14px, 2.4svh, 24px);
+    padding-top: 16px;
+    padding-bottom: 20px;
+    gap: 16px;
   }
 
   .hero__eyebrow {
     font-size: 0.7rem;
     gap: 8px;
-    margin-bottom: clamp(6px, 1.2svh, 10px);
+    margin-bottom: 7px;
   }
 
   .hero__eyebrow-line {
@@ -221,20 +221,20 @@
 
   .hero__title {
     font-size: clamp(1.48rem, 6.2vw, 1.92rem);
-    margin-bottom: clamp(8px, 1.4svh, 12px);
+    margin-bottom: 9px;
   }
 
   .hero__description {
     font-size: clamp(0.86rem, 3.3vw, 0.94rem);
     line-height: 1.48;
-    margin-bottom: clamp(12px, 2svh, 18px);
+    margin-bottom: 14px;
   }
 
   .hero__buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-bottom: clamp(12px, 2svh, 18px);
+    margin-bottom: 14px;
   }
 
   .hero__buttons .btn {
